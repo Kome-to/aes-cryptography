@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.root {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgb(32, 33, 36);
+    color: white;
+}
+
+select {
+    line-height: 1.6 !important;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>AES Cryptography</title>
+</head>
+
+<body>
+    <div class="root">
+        <div style="font-size: 60px; text-align: center;padding: 40px 10px;">AES Cryptography</div>
+        <div style="max-width:70%; margin: auto;">
+            <div class="row">
+                <div class="card" style="width: 100%; background-color: rgb(40, 41, 42); padding: 20px; color: white;">
+
+                    <div class="input">
+                        <div style="margin: 20px;"></div>
+                        <div class="row">
+                            <div class="col">
+                                <div style="margin-bottom: 6px;">Cipher Mode</div>
+                                <select id="cipher-mode-encrypt" class="form-select form-select-md"
+                                    aria-label="Default select example">
+                                    <option value="ecb">ECB</option>
+                                    <option value="cbc">CBC</option>
+                                    <option value="ofb">OFB</option>
+                                    <option disabled value="cfb">CFB</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div style="margin-bottom: 6px;">Padding</div>
+                                <select id="padding-encrypt" class="form-select form-select-md"
+                                    aria-label="Default select example">
+                                    <option value="PKCS7 Padding">PKCS7 Padding</option>
+                                    <option disabled value="PKCS7 Padding">None Padding</option>
+                                    <option disabled value="Zero Padding">Zero Padding</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div style="margin-bottom: 6px;">Key Size (in bits)</div>
+                                <select id="key-size-encrypt" class="form-select form-select-md"
+                                    aria-label="Default select example">
+                                    <option value="128">128 bits</option>
+                                    <option disabled value="192">192 bits</option>
+                                    <option disabled value="256">256 bits</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin: 20px;"></div>
+                        <div class="row">
+
+                            <div class="col">
+                                <div style="margin-bottom: 6px;">Secret Key</div>
+                                <input id="key-encrypt" type="text" class="form-control" placeholder="Enter secret key"
+                                    aria-label="Secret Key" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="col">
+                                <div id="iv-encrypt-field" style=" display: none;">
+                                    <div style="margin-bottom: 6px;">IV</div>
+                                    <input id="iv-encrypt" type="text" class="form-control" placeholder="IV"
+                                        aria-label="IV" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div style="margin: 20px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col" style="padding-left: 0;">
+                    <div class="card"
+                        style="width: 100%;background-color: rgb(40, 41, 42); padding: 20px; color: white;">
+                        <div style="font-size: 24px; font-weight: bold;">Encryption</div>
+                        <div style="width: 100%; height: 1px; background-color: white; opacity: 0.6;margin: 10px 0px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="dinputString" class="mb-2">Input</label>
+                            <textarea id="message-encrypt" class="form-control input-lg ng-pristine ng-valid ng-touched"
+                                rows="4" ng-model="textToDecrypt" placeholder="Enter input"
+                                name="textToDecrypt"></textarea>
+                        </div>
+                        <div style="margin: 20px;"></div>
+                        <div class="mb-2" style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>AES Encrypted Output (Hex)</div>
+                            <div> <button type="button" class="btn btn-md btn-primary" style=" font-weight: normal;"
+                                    id="encrypt-button">Encrypt</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="output-encrypt" class="form-control input-lg ng-pristine ng-valid ng-touched"
+                                rows="4" ng-model="textToDecrypt" placeholder="Result here"
+                                name="textToDecrypt"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="padding-right: 0;">
+                    <div class="card"
+                        style="width: 100%;background-color: rgb(40, 41, 42); padding: 20px; color: white;">
+                        <div style="font-size: 24px; font-weight: bold;">Decryption</div>
+                        <div style="width: 100%; height: 1px; background-color: white; opacity: 0.6;margin: 10px 0px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="dinputString" class="mb-2">Input (Hex)</label>
+                            <textarea id="message-decrypt" class="form-control input-lg ng-pristine ng-valid ng-touched"
+                                rows="4" ng-model="textToDecrypt" placeholder="Enter input"
+                                name="textToDecrypt"></textarea>
+                        </div>
+                        <div style="margin: 20px;"></div>
+                        <div class="mb-2" style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>AES Decrypted Output</div>
+                            <div>
+                                <button type="button" class="btn btn-md btn-primary" style=" font-weight: normal;"
+                                    id="decrypt-button">Decrypt</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="output-decrypt" class="form-control input-lg ng-pristine ng-valid ng-touched"
+                                rows="4" ng-model="textToDecrypt" placeholder="Result here"
+                                name="textToDecrypt"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./script.mjs"></script>
+</body>
+
+</html>
