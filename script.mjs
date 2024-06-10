@@ -1,4 +1,4 @@
-import cryptography from "../cipler-mode/cryptography.mjs";
+import cryptography from "./cipler-mode/cryptography.mjs";
 
 const encryptBtn = document.getElementById('encrypt-button');
 const decryptBtn = document.getElementById('decrypt-button');
