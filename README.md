@@ -2,6 +2,8 @@
 
 ## AES Algorithm Theory
 
+[Demo](https://kome-to.github.io/aes-cryptography/)
+
 ### Key size
 
 | No. of rounds | Key size (in bits) |
@@ -27,6 +29,6 @@
 |----------------------------------|
 | PKCS7 Padding                    |
 | Zero Padding                     |
-| None Padding                       |
+| None Padding                     |
 
 [Reference](https://www.cryptosys.net/pki/manpki/pki_paddingschemes.html)
